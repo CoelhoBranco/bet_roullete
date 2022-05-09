@@ -1,8 +1,13 @@
+Profile 1/
+
+*.ipynb
+*.html
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
-Profile 1/
+
 # C extensions
 *.so
 
