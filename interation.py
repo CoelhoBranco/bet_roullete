@@ -92,6 +92,7 @@ class Interation:
         numeros_html = self.outerHTML('//*[@id="root"]/div[2]/div/div/div[7]/div/div[2]/div/div/div[4]')
         return numeros_html
     
+    
     def get_banking(self):
         xpath_banking = '//*[@id="root"]/div[2]/div/div/div[9]/div[3]'
         banking_html = self.outerHTML(xpath_banking)
@@ -108,32 +109,31 @@ class Interation:
             return html
                 
         except Exception as e:
-            print('nao achou os numeros')
+            print('\n\n\n\nnao achou os numeros')
             print(e)
                 
             return False
         
     
     
-    def click_bet(self, option, confidence=0.9):
+    def click_bet(self, option, confidence=0.7):
         x, y =pyautogui.locateCenterOnScreen(f'img/{option}.png', confidence=float(confidence))
         pyautogui.click(x, y)
         return True
                               
             
-    def make_bet(self, option, apostas, delay=0.8):
+    def make_bet(self, option, apostas, confidence=0.7, delay=0.8):
         for _ in range(int(apostas)):
-            self.click_bet(option)
+            self.click_bet(option, confidence)
             time.sleep(float(delay))
         
 
     def verify_bet(self):
+        initial_numbers = self.achar_numeros()
         pass
         
         
-    def martingale_value(self, value, multiplicator):
-        value_gale = float(value)*float(multiplicator)
-        return value_gale
+    
         
         
         
@@ -142,7 +142,10 @@ class Interation:
 
 
 if __name__ == '__main__':
+    interation = Interation()
+    interation.click_bet("even")
     
+    '''
     interation = Interation()
     if interation.verificar_login() == True:
             print('vai fazer login')
@@ -158,7 +161,7 @@ if __name__ == '__main__':
     #time.sleep(15)
 
 
-
+'''
     #os.system('cls')
     # 1: fechar o popup
     input('sair')
